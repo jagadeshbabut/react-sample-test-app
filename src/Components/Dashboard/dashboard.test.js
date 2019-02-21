@@ -1,6 +1,7 @@
 import React from 'react';
-import {shallow} from 'enzyme';
+import {shallow, mount} from 'enzyme';
 import Dashboard from './dashboard';
+import {MemoryRouter} from 'react-router';
 
 describe('Dashboard Component', () => {
     it('Renders without crashing', () => {
@@ -12,9 +13,17 @@ describe('Dashboard Component', () => {
         expect(wrapper).toMatchSnapshot()
     });
 
-    it('Check Goto Todos link is working', () => {
-        const wrapper = shallow(<Dashboard/>);
-        // expect(wrapper).
+    it('Check Goto Todo link is working', () => {
+        const REDIRECTED = '/todos'
+        const wrapper = mount(
+            <MemoryRouter initialEntries={[REDIRECTED]}>
+                <Dashboard/>
+            </MemoryRouter>
+        );
+        expect(wrapper.find('Link')).toBeTruthy();
+        wrapper
+            .find('Link')
+            .simulate('click');
+        expect(wrapper.find('Link').prop('to')).toEqual(REDIRECTED)
     });
-
 });

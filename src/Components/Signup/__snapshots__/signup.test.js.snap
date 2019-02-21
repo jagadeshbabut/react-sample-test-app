@@ -28,6 +28,8 @@ exports[`Signup Component Signup component has not changed 1`] = `
       autoFocus={true}
       className="form-control"
       id="name"
+      name="name"
+      onChange={[Function]}
       placeholder="Name"
       required={true}
       type="text"
@@ -41,6 +43,8 @@ exports[`Signup Component Signup component has not changed 1`] = `
     <input
       className="form-control"
       id="inputEmail"
+      name="email"
+      onChange={[Function]}
       placeholder="Email address"
       required={true}
       type="email"
@@ -54,6 +58,8 @@ exports[`Signup Component Signup component has not changed 1`] = `
     <input
       className="form-control"
       id="inputPassword"
+      name="password"
+      onChange={[Function]}
       placeholder="Choose a Password"
       required={true}
       type="password"
@@ -67,6 +73,8 @@ exports[`Signup Component Signup component has not changed 1`] = `
     <input
       className="form-control"
       id="reInputPassword"
+      name="repassword"
+      onChange={[Function]}
       placeholder="Re-confirm Password"
       required={true}
       type="password"

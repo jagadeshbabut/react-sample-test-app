@@ -4,20 +4,19 @@ import {Link} from 'react-router-dom';
 class Signup extends Component {
     constructor(props) {
         super(props);
-        this.name = React.createRef();
-        this.email = React.createRef();
-        this.password = React.createRef();
-        this.repassword = React.createRef();
+        this.state = {}
     }
 
-    signup(event) {
+    onChange = (event) => {
+        this.setState({
+            [event.target.name]: event.target.value
+        });
+    }
+
+    signup = (event) => {
         event.preventDefault();
-        let user_info = {
-            name: this.name.current.value,
-            email: this.email.current.value,
-            password: this.password.current.value
-        }
-        // setter
+        let user_info = this.state
+        delete user_info['repassword']
         sessionStorage.setItem('user_info', JSON.stringify(user_info));
         this
             .props
@@ -40,34 +39,38 @@ class Signup extends Component {
                     <input
                         type="text"
                         id="name"
+                        name="name"
                         className="form-control"
                         placeholder="Name"
-                        ref={this.name}
+                        onChange={(e) => this.onChange(e)}
                         required
                         autoFocus/>
                     <label htmlFor="inputEmail" className="sr-only">Email address</label>
                     <input
                         type="email"
                         id="inputEmail"
+                        name="email"
                         className="form-control"
                         placeholder="Email address"
-                        ref={this.email}
+                        onChange={(e) => this.onChange(e)}
                         required/>
                     <label htmlFor="inputPassword" className="sr-only">Choose Password</label>
                     <input
                         type="password"
                         id="inputPassword"
+                        name="password"
                         className="form-control"
                         placeholder="Choose a Password"
-                        ref={this.password}
+                        onChange={(e) => this.onChange(e)}
                         required/>
                     <label htmlFor="reInputPassword" className="sr-only">Re-confirm Password</label>
                     <input
                         type="password"
                         id="reInputPassword"
+                        name="repassword"
                         className="form-control"
                         placeholder="Re-confirm Password"
-                        ref={this.repassword}
+                        onChange={(e) => this.onChange(e)}
                         required/>
                     <button className="btn btn-lg btn-primary btn-block" type="submit">Sign Up</button>
                 </form>

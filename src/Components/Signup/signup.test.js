@@ -1,6 +1,7 @@
 import React from 'react';
-import {shallow} from 'enzyme';
+import {shallow, mount} from 'enzyme';
 import Signup from './signup';
+import {MemoryRouter} from 'react-router-dom';
 
 describe('Signup Component', () => {
     it('Renders without crashing', () => {
@@ -12,9 +13,18 @@ describe('Signup Component', () => {
         expect(wrapper).toMatchSnapshot()
     });
 
-    it('Check Goto Todos link is working', () => {
-        const wrapper = shallow(<Signup/>);
-        // expect(wrapper).
+    it('Check Signin link is working', () => {
+        const REDIRECTED = '/signin'
+        const wrapper = mount(
+            <MemoryRouter initialEntries={[REDIRECTED]}>
+                <Signup/>
+            </MemoryRouter>
+        );
+        expect(wrapper.find('Link')).toBeTruthy();
+        wrapper
+            .find('Link')
+            .simulate('click');
+        expect(wrapper.find('Link').prop('to')).toEqual(REDIRECTED)
     });
 
 });

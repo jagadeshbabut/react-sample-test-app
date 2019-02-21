@@ -9,6 +9,7 @@ const testing_rules = `
 8. always start with simple component rendering test aka smoke testing then test behaviour
 9. use explicit setup() and return common shortcut variables with it
 10. use helper functions that generates tests
+11. Avoid using ref's as it is hard to test - Read Conclusion from https://goshakkk.name/controlled-vs-uncontrolled-inputs-react/ for a detailed differentiation between both
 `
 
 console.log(testing_rules)

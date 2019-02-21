@@ -28,6 +28,8 @@ exports[`Signin Component Signin component has not changed 1`] = `
       autoFocus={true}
       className="form-control"
       id="inputEmail"
+      name="email"
+      onChange={[Function]}
       placeholder="Email address"
       required={true}
       type="email"
@@ -41,6 +43,8 @@ exports[`Signin Component Signin component has not changed 1`] = `
     <input
       className="form-control"
       id="inputPassword"
+      name="password"
+      onChange={[Function]}
       placeholder="Password"
       required={true}
       type="password"

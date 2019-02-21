@@ -4,14 +4,19 @@ import {Link} from 'react-router-dom';
 class Signin extends Component {
     constructor(props) {
         super(props);
-        this.email = React.createRef();
-        this.password = React.createRef();
+        this.state = {}
+    }
+
+    onChange = (event) => {
+        this.setState({
+            [event.target.name]: event.target.value
+        });
     }
 
     signin(event) {
         event.preventDefault();
         const user_info = JSON.parse(sessionStorage.getItem('user_info'));
-        if (user_info.email === this.email.current.value && user_info.password === this.password.current.value) {
+        if (user_info.email === this.state.email && user_info.password === this.state.password) {
             this
                 .props
                 .history
@@ -33,19 +38,21 @@ class Signin extends Component {
                     <label htmlFor="inputEmail" className="sr-only">Email address</label>
                     <input
                         type="email"
+                        name="email"
                         id="inputEmail"
                         className="form-control"
                         placeholder="Email address"
-                        ref={this.email}
+                        onChange={(e) => this.onChange(e)}
                         required
                         autoFocus/>
                     <label htmlFor="inputPassword" className="sr-only">Password</label>
                     <input
                         type="password"
+                        name="password"
                         id="inputPassword"
                         className="form-control"
                         placeholder="Password"
-                        ref={this.password}
+                        onChange={(e) => this.onChange(e)}
                         required/>
                     <div className="checkbox mb-3">
                         <label>

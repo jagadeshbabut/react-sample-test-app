@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
 import './app.css';
 import {BrowserRouter as Router, Route} from 'react-router-dom';
-import Signup from './signup';
-import Signin from './signin';
-import Dashboard from './dashboard';
-import Todo from './todo';
+import Signup from './../Signup/signup';
+import Signin from './../Signin/signin';
+import Dashboard from './../Dashboard/dashboard';
+import Todo from './../Todo/todo';
 
 class App extends Component {
   render() {

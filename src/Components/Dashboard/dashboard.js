@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
-import './app.css';
+import './dashboard.css';
 
 class Dashboard extends Component {
     render() {

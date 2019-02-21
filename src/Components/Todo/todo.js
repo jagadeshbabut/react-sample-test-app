@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import './app.css';
+import './todo.css';
 
 const List = props => (
     <ul>

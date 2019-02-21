@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Todo Component Todo component has not changed 1`] = `
+<div>
+  <form
+    className="App"
+    onSubmit={[Function]}
+  >
+    <input
+      onChange={[Function]}
+      value=""
+    />
+    <button>
+      Submit
+    </button>
+  </form>
+  <List
+    items={Array []}
+  />
+</div>
+`;

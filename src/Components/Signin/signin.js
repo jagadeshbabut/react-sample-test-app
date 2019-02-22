@@ -16,7 +16,7 @@ class Signin extends Component {
         });
     }
 
-    signin(event) {
+    signin = (event) => {
         event.preventDefault();
         const user_info = JSON.parse(sessionStorage.getItem('user_info'));
         if (user_info.email === this.state.email && user_info.password === this.state.password) {
@@ -24,6 +24,8 @@ class Signin extends Component {
                 .props
                 .history
                 .push('/dashboard');
+        } else {
+            console.log('Username password doesnt match');
         }
     }
 

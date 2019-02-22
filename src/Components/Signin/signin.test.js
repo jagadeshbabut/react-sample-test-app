@@ -19,11 +19,10 @@ describe('Signin Component', () => {
     });
 
     describe("Signin shallow render", () => {
-
         let wrapper
         beforeEach(() => {
             wrapper = mount(
-                <MemoryRouter><Signin/></MemoryRouter>
+                <MemoryRouter><Signin history={[]}/></MemoryRouter>
             );
         })
 
@@ -106,11 +105,67 @@ describe('Signin Component', () => {
             // expect(checkbox.props.checked).toEqual(false);
         })
 
-        // it('submit email and password and click submit', () => {     const fakeEvent
-        // = {         preventDefault: () => null     };
-        // expect(wrapper.find('.comment-input').length).toBe(1);     wrapper
-        // .find('form')         .at(0)         .simulate('submit', fakeEvent);
-        // expect(wrapper.find('').text()).toBe(""); });
+        it('signin function is called when form is submitted', () => {
+            const EMAIL = 'hello@example.com'
+            const PASSWORD = 'SomePassword'
+            sessionStorage.setItem('user_info', JSON.stringify({email: EMAIL, password: PASSWORD}))
+            const preventDefault = jest.fn()
+            expect(wrapper.find('#inputEmail').length).toBe(1);
+            expect(wrapper.find('#inputPassword').length).toBe(1);
+            expect(wrapper.find('#inputEmail').props().value).toEqual('');
+            expect(wrapper.find('#inputPassword').props().value).toEqual('');
+            wrapper
+                .find('#inputEmail')
+                .simulate("change", {
+                    target: {
+                        name: "email",
+                        value: EMAIL
+                    }
+                });
+            wrapper
+                .find('#inputPassword')
+                .simulate("change", {
+                    target: {
+                        name: "password",
+                        value: PASSWORD
+                    }
+                });
+            wrapper
+                .find('form')
+                .at(0)
+                .simulate('submit', {preventDefault});
+            expect(preventDefault).toHaveBeenCalled();
+        });
+        it('alert box opened when wrong credentials are submitted', () => {
+            const EMAIL = 'hello@example.com'
+            const PASSWORD = 'SomePassword'
+            sessionStorage.setItem('user_info', JSON.stringify({email: EMAIL, password: PASSWORD}))
+            const preventDefault = jest.fn()
+            expect(wrapper.find('#inputEmail').length).toBe(1);
+            expect(wrapper.find('#inputPassword').length).toBe(1);
+            expect(wrapper.find('#inputEmail').props().value).toEqual('');
+            expect(wrapper.find('#inputPassword').props().value).toEqual('');
+            wrapper
+                .find('#inputEmail')
+                .simulate("change", {
+                    target: {
+                        name: "email",
+                        value: EMAIL
+                    }
+                });
+            wrapper
+                .find('#inputPassword')
+                .simulate("change", {
+                    target: {
+                        name: "password",
+                        value: "PASSWORD"
+                    }
+                });
+            wrapper
+                .find('form')
+                .at(0)
+                .simulate('submit', {preventDefault});
+            expect(preventDefault).toHaveBeenCalled();
+        });
     });
-
 });

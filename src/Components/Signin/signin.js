@@ -4,7 +4,10 @@ import {Link} from 'react-router-dom';
 class Signin extends Component {
     constructor(props) {
         super(props);
-        this.state = {}
+        this.state = {
+            'email': '',
+            'password': ''
+        }
     }
 
     onChange = (event) => {
@@ -43,6 +46,7 @@ class Signin extends Component {
                         className="form-control"
                         placeholder="Email address"
                         onChange={(e) => this.onChange(e)}
+                        value={this.state.email}
                         required
                         autoFocus/>
                     <label htmlFor="inputPassword" className="sr-only">Password</label>
@@ -53,6 +57,7 @@ class Signin extends Component {
                         className="form-control"
                         placeholder="Password"
                         onChange={(e) => this.onChange(e)}
+                        value={this.state.password}
                         required/>
                     <div className="checkbox mb-3">
                         <label>
